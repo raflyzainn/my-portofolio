@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0f1a;   
+  --foreground: #e6f0ff;   
+  --accent-1: #818cf8;     
+  --accent-2: #a78bfa;     
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { 
+    --background: #0b0f1a;
+    --foreground: #e6f0ff;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@keyframes gradient-x {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+.animated-gradient { background-size: 200% 200%; animation: gradient-x 8s ease infinite; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0) }
+  50% { transform: translateY(-6px) }
+}
+.float-slow { animation: float 6s ease-in-out infinite; }
+
+
+.marquee { position: relative; overflow: hidden; }
+.marquee--mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
+          mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 2rem;                
+  will-change: transform;
+  animation: marquee 12s linear infinite;
+}
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+.hero-grid{
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(120% 70% at 50% 0%, black 55%, transparent 75%);
+          mask-image: radial-gradient(120% 70% at 50% 0%, black 55%, transparent 75%);
+}
+
+@keyframes shine { from { background-position: 0% 0% } to { background-position: 200% 0% } }
+.btn-shine{
+  background-image: linear-gradient(90deg, rgba(255,255,255,.15), rgba(255,255,255,.35), rgba(255,255,255,.15));
+  background-size: 200% 100%;
+  animation: shine 2.2s linear infinite;
+}
+
+html, body {
+  scrollbar-width: thin;                       
+  scrollbar-color: #0f172a transparent;         
+}
+html::-webkit-scrollbar { width: 12px; height: 12px; }             
+html::-webkit-scrollbar-track { background: var(--background); }
+html::-webkit-scrollbar-thumb {
+  background: #0f172a;                           
+  border-radius: 9999px;
+  border: 3px solid var(--background);          
+}
+html::-webkit-scrollbar-thumb:hover { background: #111827; }
+html::-webkit-scrollbar-corner { background: transparent; }
+
+.scrollbox { 
+  scrollbar-width: thin;
+  scrollbar-color: #0f172a transparent;
+}
+.scrollbox::-webkit-scrollbar { width: 10px; height: 10px; }
+.scrollbox::-webkit-scrollbar-track { background: transparent; }
+.scrollbox::-webkit-scrollbar-thumb {
+  background: #0f172a;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.scrollbox::-webkit-scrollbar-thumb:hover { background: #111827; }
+.scrollbox::-webkit-scrollbar-corner { background: transparent; }
+
+
+
