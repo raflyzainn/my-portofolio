@@ -1,46 +1,54 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-export type CurrentSong = {
+export type Song = {
   title: string;
-  artist?: string;
+  artist: string;
   src: string;
   cover?: string;
 };
 
-export function useCurrentSong(pollMs = 60000) {
-  const [song, setSong] = useState<CurrentSong | null>(null);
+export function useCurrentSong(refreshMs = 60_000) {
+  const [song, setSong] = useState<Song | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchSong = async () => {
-    const url = process.env.NEXT_PUBLIC_CURRENT_SONG_URL;
-    if (!url) {
-      setError('NEXT_PUBLIC_CURRENT_SONG_URL belum diset di .env.local');
-      setLoading(false);
-      return;
-    }
+  const URL = process.env.NEXT_PUBLIC_CURRENT_SONG_URL as string | undefined;
+
+  async function load() {
     try {
+      setLoading(true);
       setError(null);
-      const res = await fetch(url, { cache: 'no-store' });
+      if (!URL) throw new Error('Missing NEXT_PUBLIC_CURRENT_SONG_URL');
+      const res = await fetch(URL, { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      if (!data?.src || !data?.title) throw new Error('Invalid JSON shape');
-      setSong(data);
-    } catch (e: any) {
-      setError(e.message || 'Failed to fetch');
+      const data: unknown = await res.json();
+
+      // minimal narrowing
+      if (typeof data !== 'object' || data === null) throw new Error('Bad JSON');
+      const d = data as Record<string, unknown>;
+      const parsed: Song = {
+        title: String(d.title ?? ''),
+        artist: String(d.artist ?? ''),
+        src: String(d.src ?? ''),
+        cover: typeof d.cover === 'string' ? d.cover : undefined,
+      };
+      if (!parsed.title || !parsed.artist || !parsed.src) {
+        throw new Error('Invalid song fields');
+      }
+      setSong(parsed);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Unknown error');
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   useEffect(() => {
-    fetchSong();
-    if (pollMs > 0) {
-      const id = window.setInterval(fetchSong, pollMs);
-      return () => window.clearInterval(id);
-    }
-  }, [pollMs]);
+    void load();
+    const id = setInterval(load, refreshMs);
+    return () => clearInterval(id);
+  }, [refreshMs, URL]);
 
-  return { song, loading, error, refetch: fetchSong };
+  return { song, loading, error };
 }
