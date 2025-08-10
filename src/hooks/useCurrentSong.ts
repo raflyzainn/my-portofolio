@@ -1,12 +1,8 @@
+// src/hooks/useCurrentSong.ts
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
-export type Song = {
-  title: string;
-  artist: string;
-  src: string;
-  cover?: string;
-};
+export type Song = { title: string; artist: string; src: string; cover?: string };
 
 export function useCurrentSong(refreshMs = 60_000) {
   const [song, setSong] = useState<Song | null>(null);
@@ -15,7 +11,7 @@ export function useCurrentSong(refreshMs = 60_000) {
 
   const URL = process.env.NEXT_PUBLIC_CURRENT_SONG_URL as string | undefined;
 
-  async function load() {
+  const load = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -24,7 +20,6 @@ export function useCurrentSong(refreshMs = 60_000) {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data: unknown = await res.json();
 
-      // minimal narrowing
       if (typeof data !== 'object' || data === null) throw new Error('Bad JSON');
       const d = data as Record<string, unknown>;
       const parsed: Song = {
@@ -33,22 +28,20 @@ export function useCurrentSong(refreshMs = 60_000) {
         src: String(d.src ?? ''),
         cover: typeof d.cover === 'string' ? d.cover : undefined,
       };
-      if (!parsed.title || !parsed.artist || !parsed.src) {
-        throw new Error('Invalid song fields');
-      }
+      if (!parsed.title || !parsed.artist || !parsed.src) throw new Error('Invalid song fields');
       setSong(parsed);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Unknown error');
     } finally {
       setLoading(false);
     }
-  }
+  }, [URL]);
 
   useEffect(() => {
     void load();
-    const id = setInterval(load, refreshMs);
+    const id = setInterval(() => { void load(); }, refreshMs);
     return () => clearInterval(id);
-  }, [refreshMs, URL]);
+  }, [load, refreshMs]);
 
   return { song, loading, error };
 }

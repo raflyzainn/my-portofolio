@@ -6,7 +6,7 @@ const NAV = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
-  { href: "/cv/ACHMAD RAFLY KHATAMI ZAIN.pdf", label: "Resume", download: true }, 
+  { href: "/cv/cv-raflyzainn.pdf", label: "Resume", download: true }, 
 ];
 
 export default function Navbar() {

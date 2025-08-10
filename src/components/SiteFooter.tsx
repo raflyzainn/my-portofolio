@@ -22,7 +22,7 @@ export default function SiteFooter() {
           </p>
 
           <a
-            href="/cv/ACHMAD RAFLY KHATAMI ZAIN.pdf"
+            href="/cv/cv-raflyzainn.pdf"
             download
             className="mt-3 inline-block rounded-full border border-white/15 px-3 py-1.5 text-xs text-slate-200 hover:bg-white/10"
           >
@@ -88,7 +88,7 @@ export default function SiteFooter() {
 
           <div className="flex items-center gap-4">
             <a
-              href="/cv/ACHMAD RAFLY KHATAMI ZAIN.pdf"
+              href="/cv/cv-raflyzainn.pdf"
               download
               className="hover:text-slate-300"
               aria-label="Download Resume PDF"

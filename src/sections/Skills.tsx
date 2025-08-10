@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
 
@@ -84,12 +85,14 @@ export default function Skills() {
                   whileHover={{ scale: 1.12, y: -2 }}
                   transition={{ type: "spring", stiffness: 260, damping: 18 }}
                 >
-                  <img
+                  <Image
                     src={s.icon}
                     alt={s.name}
                     title={s.name}
-                    aria-label={s.name}
-                    className="h-8 w-8 opacity-90 transition-opacity hover:opacity-100"
+                    width={32}
+                    height={32}
+                    className="opacity-90 transition-opacity hover:opacity-100"
+                    priority={false}
                   />
                 </motion.li>
               ))}

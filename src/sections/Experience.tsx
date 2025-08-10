@@ -1,5 +1,5 @@
-// src/sections/Experience.tsx
 'use client';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger } from '@/lib/motion';
 
@@ -17,7 +17,7 @@ const PROFESSIONAL: Item[] = [
   {
     role: 'Front End Study Group Member',
     org: 'Central Computer Improvement',
-    period: 'Jan 2025 – Present',
+    period: 'Jan 2025 - Present',
     location: 'Bandung, ID',
     points: [
       'Learned front-end development with HTML, CSS, and JavaScript',
@@ -27,7 +27,7 @@ const PROFESSIONAL: Item[] = [
   {
     role: 'MBC Laboratory Research Assistant',
     org: 'Telkom University',
-    period: 'Oct 2024 – Present',
+    period: 'Oct 2024 - Present',
     location: 'Bandung, ID',
     points: [
       'Conduct research in GIS and web-based technologies using QGIS',
@@ -38,7 +38,7 @@ const PROFESSIONAL: Item[] = [
   {
     role: 'Digitalization Team',
     org: 'Ministry of Cooperatives of The Republic of Indonesia',
-    period: 'Jun 2025 – Aug 2025',
+    period: 'Jun 2025 - Aug 2025',
     location: 'Jakarta, ID',
     points: [
       'Rebuilt main ministry website using React for better performance & UX',
@@ -49,7 +49,7 @@ const PROFESSIONAL: Item[] = [
   {
     role: 'Web Master',
     org: 'Faculty of Data Science and Intelligent Systems (Telkom University)',
-    period: 'Jul 2025 – Aug 2025',
+    period: 'Jul 2025 - Aug 2025',
     location: 'Bandung, ID',
     points: [
       'Revamped faculty website to ensure up-to-date information',
@@ -60,7 +60,7 @@ const PROFESSIONAL: Item[] = [
   {
     role: 'Front End Developer',
     org: 'HUMIC Engineering',
-    period: 'Feb 2025 – May 2025',
+    period: 'Feb 2025 - May 2025',
     location: 'Bandung, ID',
     points: [
       'Developed AI-powered eye disease detection website using React.js',
@@ -71,7 +71,7 @@ const PROFESSIONAL: Item[] = [
   {
     role: 'Google Developer Student Club (Web Development)',
     org: 'Telkom University',
-    period: 'Sep 2023 – Nov 2024',
+    period: 'Sep 2023 - Nov 2024',
     location: 'Bandung, ID',
     points: [
       'Learned and applied JavaScript, CSS, and HTML for web projects',
@@ -84,7 +84,7 @@ const ORGANIZATIONAL: Item[] = [
   {
     role: 'Entrepreneurship & Business Division Staff',
     org: 'S1 Informatics Student Association',
-    period: 'Jun 2024 – Feb 2025',
+    period: 'Jun 2024 - Feb 2025',
     points: [
       'Planned and executed student entrepreneurship programs',
       'Managed merchandise sales to support funding and branding efforts'
@@ -93,7 +93,7 @@ const ORGANIZATIONAL: Item[] = [
   {
     role: 'Vice Head of Event Division',
     org: 'Anniv Insight 2024, Telkom University',
-    period: 'Nov 2024 – Dec 2024',
+    period: 'Nov 2024 - Dec 2024',
     points: [
       'Led planning of a thematic anniversary event with American high school concept',
       'Coordinated internal teams and external vendors for event execution'
@@ -102,7 +102,7 @@ const ORGANIZATIONAL: Item[] = [
   {
     role: 'Public Relations Committee',
     org: 'Interestfest 2024, Telkom University',
-    period: 'Aug 2024 – Dec 2024',
+    period: 'Aug 2024 - Dec 2024',
     points: [
       'Acted as liaison between committee and academic departments',
       'Ensured effective communication among committee members and participants'
@@ -111,7 +111,7 @@ const ORGANIZATIONAL: Item[] = [
   {
     role: 'Logistics Committee',
     org: 'Informatics League 2023, Telkom University',
-    period: 'Sep 2023 – Dec 2023',
+    period: 'Sep 2023 - Dec 2023',
     points: [
       'Set up live streaming for esports tournaments',
       'Managed logistics flow and prepared essential equipment'
@@ -120,7 +120,7 @@ const ORGANIZATIONAL: Item[] = [
   {
     role: 'Logistics Committee',
     org: 'Hello World 2023, Telkom University',
-    period: 'Jun 2023 – Sep 2023',
+    period: 'Jun 2023 - Sep 2023',
     points: [
       'Coordinated with vendors and internal teams for smooth event operations',
       'Planned and prepared transportation, equipment, and supplies'
@@ -153,11 +153,13 @@ function ItemCard({ item }: { item: Item }) {
         </div>
 
         {item.logo ? (
-          <img
-            src={item.logo}
-            alt={item.org}
-            className="h-8 w-8 shrink-0 rounded-md ring-1 ring-white/10 object-contain bg-white/5 p-1"
-          />
+          <Image
+              src={item.logo}
+              alt={item.org}
+              fill
+              sizes="32px"
+              className="object-contain p-1"
+            />
         ) : null}
       </div>
 
