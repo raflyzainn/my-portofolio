@@ -25,6 +25,14 @@ const PROJECTS = [
     cover: '/projects/EduMap.png',
     href: 'https://github.com/raflyzainn/webgis-2-data-sma-',
   },
+  {
+    title: 'ODSForm',
+    desc: 'Digital form system for cooperative data management at the Ministry of Cooperatives. Built with Laravel and Next.js with OAuth SSO integration and secure SFTP storage.',
+    tags: ['Laravel', 'Next.js', 'MySQL', 'OAuth SSO', 'Fullstack Development'],
+    cover: '/projects/odsform.jpg',
+    href: 'https://odsform.kop.go.id/', 
+  }
+
 ];
 
 function ExternalIcon(props: React.SVGProps<SVGSVGElement>) {

@@ -6,6 +6,11 @@ import SiteFooter from "@/components/SiteFooter";
 export const metadata: Metadata = {
   title: "Rafly – Portfolio",
   description: "Front End Engineer",
+  icons: {
+    icon: "/handwave.png",
+    shortcut: "/handwave.png", 
+    apple: "/handwave.png",
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
