@@ -1,0 +1,101 @@
+# PRD: Redesign Halaman About — Achmad Rafly Khatami Zain
+
+## 1. Ringkasan
+
+Redesign halaman `/about` pada portofolio (`raflyzainn-portofolio.vercel.app`). Fokus masalah utama:
+1. Widget "Current Song on Repeat" menampilkan raw error message (`Error: Missing NEXT_PUBLIC_CURRENT_SONG_URL`) ke pengunjung — bug yang harus diperbaiki segera, prioritas tertinggi di PRD ini.
+2. Halaman belum menerapkan design system baru (Pure White + Charcoal + Coral) sama sekali — masih pakai warna default (hitam pekat, border generic).
+3. Layout foto-teks saat ini (foto besar sejajar di kanan, teks di kiri) diganti ke layout baru: **avatar kecil sejajar judul + teks satu kolom penuh di bawahnya**.
+4. Footer copy menyebut "hint of rose" — sisa dari iterasi desain sebelumnya (Espresso + Rose), perlu diupdate.
+5. Ada dead space kosong antara konten dan footer.
+
+Halaman ini menggunakan design token yang sama dengan homepage dan halaman Projects — lihat PRD redesign homepage untuk detail lengkap. PRD ini fokus spesifik ke halaman About.
+
+Stack: Next.js, Tailwind CSS.
+
+---
+
+## 2. Referensi design token (sama dengan homepage & projects)
+
+```css
+:root {
+  --bg-base: #ffffff;
+  --bg-raised: #f4f2ee;
+  --bg-raised-hover: #ece9e3;
+  --border-subtle: #e5e0d8;
+  --border-strong: #d4cdc0;
+
+  --text-primary: #1c1c1a;
+  --text-secondary: #4a4842;
+  --text-muted: #726f68;
+
+  --accent: #c1443a;
+  --accent-hover: #b23c33;
+  --accent-muted: #f5d9d5;
+  --accent-on-muted: #8a2c24;
+}
+```
+
+---
+
+## 3. Spesifikasi komponen
+
+### 3.1 Fix bug — song widget error state (prioritas tertinggi)
+
+**Masalah**: saat environment variable `NEXT_PUBLIC_CURRENT_SONG_URL` tidak ter-set, widget menampilkan string error mentah langsung ke UI production. Ini bug, bukan pilihan desain, dan harus diperbaiki sebelum perubahan visual lain.
+
+**Perbaikan**:
+- Component song widget harus punya 3 state eksplisit: `loading`, `error/unavailable`, `success` (ada lagu).
+- State `error/unavailable`: tampilkan copy netral seperti **"Not listening right now"**, tanpa detail teknis apapun (jangan tampilkan nama env var, stack trace, atau kalimat "Error:" apapun ke pengunjung). Detail error boleh tetap di-`console.error` untuk keperluan debugging developer, tapi tidak boleh dirender ke DOM yang terlihat user.
+- State `loading`: skeleton placeholder singkat (opsional, jika fetch data butuh waktu terlihat).
+- Progress bar dan tombol play tetap dirender di state error/unavailable tapi dalam kondisi non-interaktif/disabled (`opacity: 0.5`, `pointer-events: none`), bukan disembunyikan total — supaya layout tidak "loncat" ketika state berubah dari unavailable ke ada lagu.
+
+### 3.2 Layout baru — avatar kecil + teks satu kolom
+
+**Perubahan dari layout lama** (foto besar sejajar kanan, dua kolom) ke:
+
+- **Header block**: `display: flex; align-items: center; gap: 14px`.
+  - Foto: `width/height: 56px`, `border-radius: 50%`, `border: 2px solid var(--accent-muted)`, `object-fit: cover`.
+  - Di sebelah kanan foto: label kecil "ABOUT" (`font-size: 11px`, `color: var(--accent)`, `letter-spacing: 0.04em`, uppercase) di baris atas, nama lengkap di bawahnya (`font-size: 17-20px`, `font-weight: 500`, `color: var(--text-primary)`).
+- **Body teks**: satu kolom penuh di bawah header block, `max-width: 560px` (jangan biarkan melebar penuh viewport — line-length yang terlalu panjang menyulitkan baca), paragraf-paragraf existing dipertahankan apa adanya, `font-size: 12.5-14px`, `line-height: 1.7`, `color: var(--text-secondary)`.
+- **Tag stack kecil** (opsional, nice-to-have): setelah paragraf terakhir, tampilkan 2-3 badge stack utama (misal React, Next.js, Node.js — atau update sesuai stack ter-update di CV terbaru), styling sama dengan tag primer di halaman Projects (`background: var(--accent-muted)` untuk 1 tag utama, `background: var(--bg-raised)` untuk sisanya).
+- **Song widget**: diringkas jadi satu baris compact di bawah tag stack, dipisah `border-top: 0.5px solid var(--border-subtle)` + `padding-top: 12px`. Bukan lagi card besar seperti sekarang — cukup: icon musik kecil (`ti-music`, `color: var(--accent)`) + teks judul lagu/status dalam satu baris (`font-size: 11.5-12px`, `color: var(--text-muted)`), tanpa progress bar/album art besar kecuali memang ada lagu yang sedang diputar (progress bar dan album art baru muncul di state `success`, lihat 3.1).
+
+**Responsive (mobile)**: layout ini sudah single-column secara natural, jadi tidak perlu penyesuaian besar di breakpoint mobile — cukup pastikan `max-width` body teks jadi `100%` (bukan tetap 560px) di layar sempit, dan ukuran foto avatar bisa dikecilkan sedikit (`48px`) jika diperlukan.
+
+### 3.3 Footer copy update
+
+**Masalah**: tagline "Front-End Engineer — clean, accessible UI with a hint of rose" menyebut palet warna lama (Espresso + Rose) yang sudah tidak dipakai.
+
+**Perubahan**: update tagline supaya tidak menyebut warna secara eksplisit (menghindari perlu update lagi kalau palet berubah lagi di masa depan), fokus ke value proposition, misal: "Front-End Engineer — building clean, accessible interfaces with thoughtful detail." (draft, sesuaikan dengan gaya bahasa yang diinginkan).
+
+### 3.4 Isi dead space sebelum footer
+
+- Tambahkan quick-stats row kecil di bawah song widget (setelah section 3.2), sebelum divider ke footer: 2-3 angka singkat yang relevan (contoh: jumlah internship, jumlah project, HKI/paten terdaftar — sesuaikan dengan data CV terbaru).
+- Style: `display: flex; gap: 10px`, tiap item `flex: 1`, `background: var(--bg-raised)`, `border-radius: 8px`, `padding: 8px 10px`, `text-align: center`; angka `font-size: 15-16px`, `font-weight: 500`, `color: var(--text-primary)`; label `font-size: 10-11px`, `color: var(--text-muted)`.
+- Alternatif/tambahan: CTA kecil ("View my projects →" atau "Download resume") yang mengarah ke halaman lain, ditempatkan di bawah quick-stats.
+
+### 3.5 Konsistensi elemen lain
+
+- Semua warna teks, border, dan aksen di halaman ini (termasuk footer nav links "Home / Projects / About" dan link "GitHub / LinkedIn") mengikuti token di section 2 — ganti dari hitam pekat/abu generic ke `--text-primary` / `--text-secondary` / `--accent` sesuai konteks.
+- Nav link footer diberi hover state konsisten dengan nav header (`color` transisi ke `--accent` on hover, `150-200ms ease-out`).
+
+---
+
+## 4. Non-goals
+
+- Tidak menambah section konten baru di luar yang disebutkan (misal tidak menambah timeline hobi, galeri foto tambahan, dsb) — fokus redesign layout dan fix bug dari yang sudah ada.
+- Tidak mengubah isi paragraf About kecuali diperlukan untuk menyesuaikan panjang teks dengan layout baru.
+
+---
+
+## 5. Acceptance criteria
+
+- [ ] Song widget tidak pernah menampilkan raw error string ke pengunjung dalam kondisi apapun — fallback copy netral ("Not listening right now") selalu tampil saat data tidak tersedia.
+- [ ] Layout About berubah dari dua-kolom (foto besar + teks) menjadi avatar kecil sejajar judul + teks satu kolom penuh di bawahnya.
+- [ ] Body teks dibatasi `max-width` yang nyaman dibaca (tidak melebar penuh viewport) pada desktop.
+- [ ] Song widget diringkas jadi satu baris compact, bukan card besar seperti sebelumnya.
+- [ ] Footer tagline tidak lagi menyebut "hint of rose" atau referensi palet warna lama lainnya.
+- [ ] Ada quick-stats row atau elemen pengisi lain sebelum footer — tidak ada dead space kosong besar seperti sebelumnya.
+- [ ] Semua warna di halaman (termasuk footer) konsisten dengan design token Pure White + Charcoal + Coral, tidak ada warna hardcoded lama yang tersisa.
+- [ ] Nav link di footer punya hover state yang konsisten dengan nav header.

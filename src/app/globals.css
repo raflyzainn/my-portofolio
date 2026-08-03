@@ -1,30 +1,54 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0f1a;   
-  --foreground: #e6f0ff;   
-  --accent-1: #818cf8;     
-  --accent-2: #a78bfa;     
+  /* Surfaces */
+  --bg-base: #ffffff;
+  --bg-raised: #f4f2ee;
+  --bg-raised-hover: #ece9e3;
+  --border-subtle: #e5e0d8;
+  --border-strong: #d4cdc0;
+
+  /* Text */
+  --text-primary: #1c1c1a;
+  --text-secondary: #4a4842;
+  --text-muted: #726f68;
+
+  /* Accent (Coral) */
+  --accent: #c1443a;
+  --accent-hover: #b23c33;
+  --accent-muted: #f5d9d5;
+  --accent-on-muted: #8a2c24;
+
+  /* Semantic */
+  --success: #4f8f66;
+  --warning: #b5842a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg-base: var(--bg-base);
+  --color-bg-raised: var(--bg-raised);
+  --color-bg-raised-hover: var(--bg-raised-hover);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-on-muted: var(--accent-on-muted);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root { 
-    --background: #0b0f1a;
-    --foreground: #e6f0ff;
-  }
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-}
+/* ---- Keyframes ---- */
 
 @keyframes gradient-x {
   0% { background-position: 0% 50% }
@@ -39,6 +63,13 @@ body {
 }
 .float-slow { animation: float 6s ease-in-out infinite; }
 
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.8); opacity: 0.4; }
+}
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* ---- Marquee ---- */
 
 .marquee { position: relative; overflow: hidden; }
 .marquee--mask {
@@ -48,57 +79,68 @@ body {
 .marquee__track {
   display: flex;
   width: max-content;
-  gap: 2rem;                
+  gap: 2rem;
   will-change: transform;
   animation: marquee 12s linear infinite;
 }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
-.hero-grid{
+/* ---- Page Grid ---- */
+
+.page-grid{
   background-image:
-    linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size: 24px 24px;
-  -webkit-mask-image: radial-gradient(120% 70% at 50% 0%, black 55%, transparent 75%);
-          mask-image: radial-gradient(120% 70% at 50% 0%, black 55%, transparent 75%);
+    linear-gradient(to right, color-mix(in srgb, var(--border-subtle) 50%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border-subtle) 50%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 70%);
+          mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 70%);
 }
 
-@keyframes shine { from { background-position: 0% 0% } to { background-position: 200% 0% } }
+/* ---- Dot Grid (decorative) ---- */
+
+.dot-grid{
+  background-image: radial-gradient(circle, var(--border-strong) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* ---- Button Shine ---- */
+
+@keyframes shine { 0% { background-position: -100% 0% } 100% { background-position: 200% 0% } }
 .btn-shine{
-  background-image: linear-gradient(90deg, rgba(255,255,255,.15), rgba(255,255,255,.35), rgba(255,255,255,.15));
+  background-image: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
   background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
   animation: shine 2.2s linear infinite;
 }
 
+/* ---- Scrollbars ---- */
 
 html, body {
-  scrollbar-width: thin;                       
-  scrollbar-color: #0f172a transparent;         
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
 }
-html::-webkit-scrollbar { width: 12px; height: 12px; }             
-html::-webkit-scrollbar-track { background: var(--background); }
+html::-webkit-scrollbar { width: 12px; height: 12px; }
+html::-webkit-scrollbar-track { background: transparent; }
 html::-webkit-scrollbar-thumb {
-  background: #0f172a;                           
+  background: var(--border-strong);
   border-radius: 9999px;
-  border: 3px solid var(--background);          
+  border: 3px solid var(--bg-base);
 }
-html::-webkit-scrollbar-thumb:hover { background: #111827; }
+html::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 html::-webkit-scrollbar-corner { background: transparent; }
 
-.scrollbox { 
+.scrollbox {
   scrollbar-width: thin;
-  scrollbar-color: #0f172a transparent;
+  scrollbar-color: var(--border-strong) transparent;
 }
 .scrollbox::-webkit-scrollbar { width: 10px; height: 10px; }
 .scrollbox::-webkit-scrollbar-track { background: transparent; }
 .scrollbox::-webkit-scrollbar-thumb {
-  background: #0f172a;
+  background: var(--border-strong);
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
-.scrollbox::-webkit-scrollbar-thumb:hover { background: #111827; }
+.scrollbox::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 .scrollbox::-webkit-scrollbar-corner { background: transparent; }
-
-
-
