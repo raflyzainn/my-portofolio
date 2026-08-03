@@ -138,6 +138,7 @@ Tambahkan sebagai CSS custom properties di `globals.css` (atau file setara), lal
 ---
 
 ## 6. Acceptance criteria
+// trigger build & deploy ke staging, lalu cek visual di browser (desktop + mobile) untuk memastikan semua perubahan diterapkan sesuai design system baru.
 
 - [ ] Seluruh palet warna baru (`--bg-base`, `--bg-raised`, `--accent`, dst.) diterapkan konsisten di semua section, tidak ada warna hardcoded lama (indigo/ungu) yang tersisa.
 - [ ] Header full-width dengan logo kiri + nav kanan, active/hover state berfungsi.
