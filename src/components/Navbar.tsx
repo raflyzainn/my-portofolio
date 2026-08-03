@@ -36,8 +36,12 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-[min(1600px,92vw)] items-center justify-between px-6 py-3">
         {/* Logo */}
-        <Link href="/" className="text-lg font-bold tracking-tight text-[--text-primary]">
-          ARZ
+        <Link
+          href="/"
+          className="flex items-baseline text-lg font-semibold tracking-tight text-[--text-primary]"
+        >
+          rafly
+          <span className="text-[--accent]">.</span>
         </Link>
 
         {/* Desktop nav */}
