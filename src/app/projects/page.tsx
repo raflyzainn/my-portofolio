@@ -1,11 +1,11 @@
-import Projects from "@/sections/Projects"; 
+import Projects from '@/sections/Projects';
 
-export const metadata = { title: "Projects — Rafly" };
+export const metadata = { title: 'Projects — Rafly' };
 
 export default function ProjectsPage() {
   return (
-    <main className="mx-auto max-w-5xl px-6 pt-28 pb-24">
+    <div className="mx-auto max-w-[min(1600px,92vw)] px-6 pt-12 pb-24">
       <Projects />
-    </main>
+    </div>
   );
 }

@@ -1,0 +1,25 @@
+# User Taste Profile
+- Gives brief, direct instructions and expects the assistant to take initiative — read context files, explore the codebase, and propose a plan. Confidence: 0.9
+- Communicates bilingually, naturally mixing Indonesian and English in messages — assistant should respond in the same language(s) the user uses. Confidence: 0.8
+- Appreciates plan mode with clarifying questions before implementation; willing to confirm design decisions when asked. Confidence: 0.85
+- Uses PRDs (product requirement documents) as source of truth for design/feature work. Expects the assistant to read the PRD carefully and match it exactly — gets frustrated when PRD details (colors, layout) are missed. Confidence: 0.95
+- Prefers Next.js + Tailwind CSS + TypeScript + Framer Motion for portfolio/website projects. Confidence: 0.9
+- Uses CSS custom properties (`:root` variables) for design tokens, integrated with Tailwind via `@theme inline`. Confidence: 0.9
+- Organizes pages as discrete section components (Hero, Experience, Skills, Contact) with shared components (Navbar, Footer). Confidence: 0.85
+- Prefers warm dark color palettes (espresso/warm brown tones with rose accents) over cool palettes (navy/indigo). When given a terminal/navy design, rejected it and explicitly asked to revert to the site's warm theme colors. Confidence: 0.8
+- Prefers monochrome icon treatment by default with color revealed on hover. Confidence: 0.3
+- Prefers skill/tech icons shown in their native colors with no grayscale and no hover animation — wants them visible and recognizable at a glance. Confidence: 0.85
+- Favors card-based layouts with subtle hover effects (border color change, slight translateY). Confidence: 0.8
+- Prefers compact, information-dense card layouts over oversized/bulky ones — small thumbnails, concise text (line clamping welcome), tighter padding and gaps. Rejects large vertical cards dominated by big images. Confidence: 0.75
+- Prefers vertical/squarish project card layouts (image/media on top, content below) over horizontal side-by-side image-and-content layouts, which feel too rectangular. Confidence: 0.6
+- Prefers action/utility icons (GitHub, live demo links) to be persistently visible by default rather than hidden until hover. Hover effects on icons should enhance (color/background change), not toggle visibility. Confidence: 0.7
+- Prefers full-width sticky navigation bars over floating pill-style navbars. Confidence: 0.8
+- Prefers dashed/broken timeline lines (e.g. `repeating-linear-gradient`) over solid continuous lines for visual interest. Confidence: 0.85
+- Responsive-first: expects hamburger menu on mobile, asymmetric layouts on desktop. Confidence: 0.85
+- Expects sections on a single page to be visually distinct from each other, but prefers soft/creative transitions (color shifts, gradients, subtle accents) over hard borders or separator lines — explicitly rejects using lines to separate sections. Confidence: 0.85
+- Expects consistent layout container (`max-w-[min(1600px,92vw)] px-6`) applied across all pages and global components — not just the homepage. Confidence: 0.85
+- Prefers timeline/experience entries ordered newest-first (most recent at top) rather than oldest-first. Confidence: 0.85
+- Enjoys subtle ambient/fixed page backgrounds (coral glows, grid patterns, cursor-tracking spotlights) applied globally rather than scoped to a single section. Will ask to extend a liked section background to the entire page. Confidence: 0.7
+- Prefers NOT to run builds (e.g., `next build`) during development — wants to batch builds for later, not after every change. Assistant should avoid auto-building unless explicitly asked. Confidence: 0.9
+- Prefers terminal/console/code-block UI elements to have terminal *structure* (chrome bar with red/yellow/green dots, browser-chrome styling) but colored with the site's own theme tokens (--bg-raised, --border-subtle, etc.), not authentic terminal colors like navy `#1a1a2e`. Repeatedly rejected the navy/dark terminal palette and asked to revert to theme colors / white. Confidence: 0.85
+- Prefers elements to be visually straight and level — rejects decorative tilts/rotations (e.g. `rotate(-3deg)`) on cards and UI elements. Confidence: 0.6
