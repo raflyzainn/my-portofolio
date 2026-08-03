@@ -30,6 +30,7 @@ Tambahkan sebagai CSS custom properties di `globals.css` (atau file setara), lal
   --border-subtle: #e5e0d8;  /* border default, hairline */
   --border-strong: #d4cdc0;  /* border hover / emphasis */
 
+
   /* Text */
   --text-primary: #1c1c1a;   /* heading, teks utama — charcoal, bukan hitam pekat */
   --text-secondary: #4a4842; /* body text, deskripsi */
