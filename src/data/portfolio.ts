@@ -96,7 +96,7 @@ export const organizationalExperiences: ExperienceEntry[] = [
     id: 'cci',
     role: 'Front End Study Group Member',
     company: 'Central Computer Improvement',
-    period: 'Jan 2025 - Present',
+    period: 'Jan 2025 - Jan 2026',
     summary: 'Learned front-end development with HTML, CSS, JavaScript and Next.js through peer coding sessions.',
   },
   {
