@@ -14,10 +14,10 @@
   --text-muted: #726f68;
 
   /* Accent (Coral) */
-  --accent: #c1443a;
-  --accent-hover: #b23c33;
-  --accent-muted: #f5d9d5;
-  --accent-on-muted: #8a2c24;
+  --accent: #D85A30;
+  --accent-hover: #c44e27;
+  --accent-muted: #f8ddd5;
+  --accent-on-muted: #a14020;
 
   /* Semantic */
   --success: #4f8f66;
