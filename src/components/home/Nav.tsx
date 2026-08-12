@@ -28,10 +28,10 @@ export default function Nav() {
 
   return (
     <nav
-      className={`sticky top-0 z-40 h-16 transition-all duration-200 ${
+      className={`sticky top-0 z-40 h-16 border-b transition-colors duration-200 ${
         scrolled
-          ? 'border-b border-[--border-subtle] bg-[--bg-base]/90 backdrop-blur-xl'
-          : 'border-b border-transparent bg-[--bg-base]'
+          ? 'border-[--border-subtle] bg-[--bg-nav] shadow-[0_1px_4px_rgba(0,0,0,0.06)]'
+          : 'border-transparent bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-full max-w-[680px] items-center justify-between px-6">
@@ -55,10 +55,10 @@ export default function Nav() {
                   e.preventDefault();
                   handleClick(item.id);
                 }}
-                className={`text-[12px] transition-colors duration-150 sm:text-[13px] ${
+                className={`border-b-2 pb-1 text-[12px] transition-colors duration-150 sm:text-[13px] ${
                   activeId === item.id
-                    ? 'text-[--accent]'
-                    : 'text-[--text-muted] hover:text-[--text-primary]'
+                    ? 'border-[--accent] text-[--accent]'
+                    : 'border-transparent text-[--text-muted] hover:text-[--text-primary]'
                 }`}
                 aria-current={activeId === item.id ? 'location' : undefined}
               >

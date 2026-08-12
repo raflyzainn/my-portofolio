@@ -18,8 +18,8 @@ export function useActiveSection(sectionIds: string[]) {
           }
         },
         {
-          threshold: 0.3,
-          rootMargin: '-64px 0px -60% 0px',
+          threshold: 0,
+          rootMargin: '-80px 0px -70% 0px',
         }
       );
 

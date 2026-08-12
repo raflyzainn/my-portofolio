@@ -5,6 +5,7 @@
   --bg-base: #ffffff;
   --bg-raised: #f4f2ee;
   --bg-raised-hover: #ece9e3;
+  --bg-nav: #eae7e2;
   --border-subtle: #e5e0d8;
   --border-strong: #d4cdc0;
 
@@ -28,6 +29,7 @@
   --color-bg-base: var(--bg-base);
   --color-bg-raised: var(--bg-raised);
   --color-bg-raised-hover: var(--bg-raised-hover);
+  --color-bg-nav: var(--bg-nav);
   --color-border-subtle: var(--border-subtle);
   --color-border-strong: var(--border-strong);
   --color-text-primary: var(--text-primary);
