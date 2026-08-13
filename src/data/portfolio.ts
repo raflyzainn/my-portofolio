@@ -145,35 +145,58 @@ export const organizationalExperiences: ExperienceEntry[] = [
 
 export const skillCategories: SkillCategory[] = [
   {
-    name: 'Languages',
+    name: 'Frontend — Languages',
     skills: [
       { label: 'TypeScript', primary: true },
       { label: 'JavaScript', primary: true },
-      { label: 'Go', primary: true },
-      { label: 'Python', primary: false },
-      { label: 'HTML', primary: false },
-      { label: 'CSS', primary: false },
+      { label: 'HTML', primary: true },
+      { label: 'CSS', primary: true },
       { label: 'Dart', primary: false },
     ],
   },
   {
-    name: 'Frameworks & Libraries',
+    name: 'Frontend — Frameworks & Libraries',
     skills: [
       { label: 'Next.js', primary: true },
       { label: 'Vue', primary: true },
       { label: 'React', primary: true },
       { label: 'Nuxt', primary: false },
-      { label: 'Laravel', primary: false },
-      { label: 'Flutter', primary: false },
-      { label: 'Express', primary: false },
       { label: 'Angular', primary: false },
+      { label: 'SvelteKit', primary: false },
+      { label: 'Flutter', primary: false },
     ],
   },
   {
-    name: 'Styling',
+    name: 'Frontend — Styling',
     skills: [
       { label: 'Tailwind CSS', primary: true },
       { label: 'Bootstrap', primary: false },
+    ],
+  },
+  {
+    name: 'Backend — Languages',
+    skills: [
+      { label: 'TypeScript', primary: true },
+      { label: 'Go', primary: true },
+      { label: 'Python', primary: false },
+      { label: 'JavaScript', primary: false },
+    ],
+  },
+  {
+    name: 'Backend — Frameworks',
+    skills: [
+      { label: 'Laravel', primary: true },
+      { label: 'Express', primary: true },
+    ],
+  },
+  {
+    name: 'Backend — Databases',
+    skills: [
+      { label: 'MySQL', primary: true },
+      { label: 'PostgreSQL', primary: true },
+      { label: 'PocketBase', primary: false },
+      { label: 'MongoDB', primary: false },
+      { label: 'Microsoft SQL Server', primary: false },
     ],
   },
   {
@@ -186,15 +209,6 @@ export const skillCategories: SkillCategory[] = [
       { label: 'Jira', primary: false },
       { label: 'Trello', primary: false },
       { label: 'Vercel', primary: false },
-    ],
-  },
-  {
-    name: 'Databases',
-    skills: [
-      { label: 'MySQL', primary: true },
-      { label: 'PostgreSQL', primary: true },
-      { label: 'MongoDB', primary: false },
-      { label: 'Microsoft SQL Server', primary: false },
     ],
   },
 ];
