@@ -24,6 +24,7 @@ export interface ProjectEntry {
   description: string;
   tags: { label: string; primary: boolean }[];
   href?: string;
+  status?: 'in-progress';
 }
 
 export interface ContactLink {
@@ -275,6 +276,30 @@ export const projects: ProjectEntry[] = [
       { label: 'Nuxt', primary: true },
     ],
     href: 'https://kompas.id/berlangganan',
+  },
+  {
+    id: 'go-microservice',
+    name: 'Go Microservice E-Commerce',
+    year: '2025',
+    description: 'Microservice-based e-commerce backend built with Go.',
+    tags: [
+      { label: 'Go', primary: true },
+      { label: 'Microservices', primary: true },
+    ],
+    href: 'https://github.com/raflyzainn/go-microservice-ecommerce',
+    status: 'in-progress',
+  },
+  {
+    id: 'psycoach-ai',
+    name: 'psyCoach AI',
+    year: '2025',
+    description: 'AI-powered psychology coaching platform.',
+    tags: [
+      { label: 'AI', primary: true },
+      { label: 'Python', primary: false },
+    ],
+    href: 'https://github.com/raflyzainn/psyCoach-AI',
+    status: 'in-progress',
   },
 ];
 
