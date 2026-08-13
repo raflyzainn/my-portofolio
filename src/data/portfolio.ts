@@ -187,6 +187,7 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { label: 'Laravel', primary: true },
       { label: 'Express', primary: true },
+      { label: 'Gin', primary: false },
     ],
   },
   {
