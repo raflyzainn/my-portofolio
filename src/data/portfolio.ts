@@ -145,57 +145,47 @@ export const organizationalExperiences: ExperienceEntry[] = [
 
 export const skillCategories: SkillCategory[] = [
   {
-    name: 'Frontend — Languages',
+    name: 'Languages',
     skills: [
       { label: 'TypeScript', primary: true },
       { label: 'JavaScript', primary: true },
-      { label: 'HTML', primary: true },
-      { label: 'CSS', primary: true },
+      { label: 'Go', primary: true },
+      { label: 'Python', primary: false },
+      { label: 'C++', primary: false },
+      { label: 'C#', primary: false },
+      { label: 'HTML', primary: false },
+      { label: 'CSS', primary: false },
       { label: 'Dart', primary: false },
     ],
   },
   {
-    name: 'Frontend — Frameworks & Libraries',
+    name: 'Frontend',
     skills: [
       { label: 'Next.js', primary: true },
       { label: 'Vue', primary: true },
       { label: 'React', primary: true },
+      { label: 'Tailwind CSS', primary: true },
       { label: 'Nuxt', primary: false },
       { label: 'Angular', primary: false },
       { label: 'SvelteKit', primary: false },
       { label: 'Flutter', primary: false },
-    ],
-  },
-  {
-    name: 'Frontend — Styling',
-    skills: [
-      { label: 'Tailwind CSS', primary: true },
       { label: 'Bootstrap', primary: false },
     ],
   },
   {
-    name: 'Backend — Languages',
-    skills: [
-      { label: 'TypeScript', primary: true },
-      { label: 'Go', primary: true },
-      { label: 'Python', primary: false },
-      { label: 'JavaScript', primary: false },
-    ],
-  },
-  {
-    name: 'Backend — Frameworks',
+    name: 'Backend',
     skills: [
       { label: 'Laravel', primary: true },
       { label: 'Express', primary: true },
       { label: 'Gin', primary: false },
+      { label: 'PocketBase', primary: false },
     ],
   },
   {
-    name: 'Backend — Databases',
+    name: 'Databases',
     skills: [
       { label: 'MySQL', primary: true },
       { label: 'PostgreSQL', primary: true },
-      { label: 'PocketBase', primary: false },
       { label: 'MongoDB', primary: false },
       { label: 'Microsoft SQL Server', primary: false },
     ],
