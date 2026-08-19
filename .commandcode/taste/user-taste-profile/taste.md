@@ -13,7 +13,10 @@
 - Prefers compact, information-dense card layouts over oversized/bulky ones — small thumbnails, concise text (line clamping welcome), tighter padding and gaps. Rejects large vertical cards dominated by big images. Confidence: 0.75
 - Prefers vertical/squarish project card layouts (image/media on top, content below) over horizontal side-by-side image-and-content layouts, which feel too rectangular. Confidence: 0.6
 - Prefers action/utility icons (GitHub, live demo links) to be persistently visible by default rather than hidden until hover. Hover effects on icons should enhance (color/background change), not toggle visibility. Confidence: 0.7
+- Prefers contextual icons that reflect the link destination — e.g., a GitHub icon for GitHub URLs, and an external-link icon for live website URLs — rather than using the same icon for all links. Confidence: 0.9
+- Wants portfolio project items to support visible status indicators (e.g., an "on progress" badge) so visitors can immediately see which projects are work-in-progress. Confidence: 0.85
 - Prefers full-width sticky navigation bars over floating pill-style navbars. Confidence: 0.8
+- Prefers nav to start transparent, then become solid with distinct background color + subtle shadow on scroll — wants visible elevation/depth effect, not just a border separator. Confidence: 0.85
 - Prefers dashed/broken timeline lines (e.g. `repeating-linear-gradient`) over solid continuous lines for visual interest. Confidence: 0.85
 - Responsive-first: expects hamburger menu on mobile, asymmetric layouts on desktop. Confidence: 0.85
 - Expects sections on a single page to be visually distinct from each other, but prefers soft/creative transitions (color shifts, gradients, subtle accents) over hard borders or separator lines — explicitly rejects using lines to separate sections. Confidence: 0.85
@@ -27,4 +30,6 @@
 - Prefers detailed, multi-section Hero/about layouts structured as numbered labeled subsections (e.g., "01 who I am", "02 what I work with", "03 outside of code") with descriptive labels and a stats row, rather than minimal one-liner intros. Wants the Hero to mirror the About component's content pattern. Confidence: 0.85
 - Expects a prominent "Download CV" button in the Hero/header area so the resume is immediately accessible from the top of the page. Confidence: 0.8
 - Wants organizational/leadership experience presented as a distinct labeled subsection separate from professional work experience (e.g., "Professional" and "Organizational" groupings), not merged into a single list. Confidence: 0.9
-- Prefers skills displayed organized into detailed labeled categories (Languages, Frameworks & Libraries, Styling, Tools, Databases, etc.) rather than a flat tag list, with primary/core skills visually distinguished from secondary ones. Confidence: 0.85
+- Prefers skills displayed organized into detailed labeled categories rather than a flat tag list, with primary/core skills visually distinguished from secondary ones. Wants a flat category structure with: Languages (shared across frontend/backend), Frontend (frameworks + styling merged), Backend (frameworks merged), Databases (separate category), and Tools — rather than prefixed sub-groups like "Frontend — Languages". Confidence: 0.9
+- Uses version-prefixed branch naming convention (e.g. `v3-nav-improvements`, `v3-(feature)`) — version number + short feature descriptor with hyphens. Confidence: 0.8
+- Expects feature-branch → PR → merge workflow: create a branch, commit changes, push, open a PR to main/master, then merge. Does not want commits pushed directly to the main branch. Confidence: 0.85

@@ -233,7 +233,7 @@ export const projects: ProjectEntry[] = [
     id: 'edumap',
     name: 'EduMap Bandung',
     year: '2025',
-    description: 'HS accreditation across Bandung Regency with interactive map.',
+    description: 'High school accreditation across Bandung Regency with interactive map.',
     tags: [
       { label: 'Flask', primary: true },
       { label: 'QGIS', primary: true },
