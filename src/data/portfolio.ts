@@ -301,6 +301,19 @@ export const projects: ProjectEntry[] = [
     href: 'https://github.com/raflyzainn/psyCoach-AI',
     status: 'in-progress',
   },
+  {
+    id: 'pfriends',
+    name: 'PFriends',
+    year: '2026',
+    description: 'Social networking platform for friends and communities in Pertamina Foundation Awardees.',
+    tags: [
+      { label: 'Sveltekit', primary: true },
+      { label: 'Pocketbase', primary: true },
+      
+    ],
+    href: 'https://gitlab.com/pf-digitalisasi/pffriends',
+    status: 'in-progress',
+  },
 ];
 
 export const contacts: ContactLink[] = [
