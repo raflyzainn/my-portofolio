@@ -171,6 +171,7 @@ export const skillCategories: SkillCategory[] = [
       { label: 'SvelteKit', primary: false },
       { label: 'Flutter', primary: false },
       { label: 'Bootstrap', primary: false },
+      
     ],
   },
   {
@@ -201,6 +202,11 @@ export const skillCategories: SkillCategory[] = [
       { label: 'Jira', primary: false },
       { label: 'Trello', primary: false },
       { label: 'Vercel', primary: false },
+      { label: 'Katalon Studio', primary: false },
+      { label: 'Postman', primary: false },
+      { label: 'Docker', primary: false },
+      { label: 'Kubernetes', primary: false },
+      { label: 'Playwright', primary: false },
     ],
   },
 ];
