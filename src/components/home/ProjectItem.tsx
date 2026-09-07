@@ -13,6 +13,7 @@ export default function ProjectItem({ item, index, isLast }: Props) {
   const hasLink = !!item.href;
   const isGithubLink = hasLink && item.href!.includes('github.com');
   const isInProgress = item.status === 'in-progress';
+  const categoryLabel = item.category === 'professional' ? 'Professional' : 'Personal';
 
   const ExternalLinkIcon = () => (
     <svg
@@ -57,6 +58,15 @@ export default function ProjectItem({ item, index, isLast }: Props) {
           <p className="text-sm font-medium text-[--text-primary]">
             {item.name}
             {hasLink && (isGithubLink ? <GitHubIcon /> : <ExternalLinkIcon />)}
+            <span
+              className={`ml-2 inline-block rounded-full px-1.5 py-0.5 text-[10px] font-normal ${
+                item.category === 'professional'
+                  ? 'bg-[#E6F4EA] text-[#1E6B3A]'
+                  : 'bg-[#E8F1FA] text-[#24557A]'
+              }`}
+            >
+              {categoryLabel}
+            </span>
             {isInProgress && (
               <span className="ml-2 inline-block text-[10px] px-1.5 py-0.5 rounded-full bg-[#FAECE7] text-[#712B13] font-normal">
                 on progress
