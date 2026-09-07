@@ -22,6 +22,7 @@ export interface ProjectEntry {
   name: string;
   year: string;
   description: string;
+  category: 'personal' | 'professional';
   tags: { label: string; primary: boolean }[];
   href?: string;
   status?: 'in-progress';
@@ -217,6 +218,7 @@ export const projects: ProjectEntry[] = [
     name: 'AI Eye Disease Screening',
     year: '2025',
     description: 'Upload eye photo, AI flags conditions, doctor verifies.',
+    category: 'professional',
     tags: [
       { label: 'React', primary: true },
       { label: 'Node', primary: true },
@@ -228,6 +230,7 @@ export const projects: ProjectEntry[] = [
     name: 'ConnectServes',
     year: '2025',
     description: 'Two-sided services marketplace: providers list, customers book.',
+    category: 'personal',
     tags: [
       { label: 'Flask', primary: true },
       { label: 'HTML', primary: false },
@@ -240,6 +243,7 @@ export const projects: ProjectEntry[] = [
     name: 'EduMap Bandung',
     year: '2025',
     description: 'High school accreditation across Bandung Regency with interactive map.',
+    category: 'personal',
     tags: [
       { label: 'Flask', primary: true },
       { label: 'QGIS', primary: true },
@@ -253,6 +257,7 @@ export const projects: ProjectEntry[] = [
     name: 'ODSForm',
     year: '2025',
     description: 'Digital form system for cooperative data at the Ministry of Cooperatives.',
+    category: 'professional',
     tags: [
       { label: 'Laravel', primary: true },
       { label: 'Next.js', primary: true },
@@ -266,6 +271,7 @@ export const projects: ProjectEntry[] = [
     name: 'Kompas B2B Dashboard',
     year: '2025',
     description: 'Admin dashboard for managing B2B keywords and related data for Kompas business.',
+    category: 'professional',
     tags: [
       { label: 'Vue', primary: true },
       { label: 'Nuxt', primary: true },
@@ -277,6 +283,7 @@ export const projects: ProjectEntry[] = [
     name: 'Kompas Subscription Page',
     year: '2025',
     description: 'Subscription page for Kompas.id.',
+    category: 'professional',
     tags: [
       { label: 'Vue', primary: true },
       { label: 'Nuxt', primary: true },
@@ -288,6 +295,7 @@ export const projects: ProjectEntry[] = [
     name: 'Go Microservice E-Commerce',
     year: '2025',
     description: 'Microservice-based e-commerce backend built with Go.',
+    category: 'personal',
     tags: [
       { label: 'Go', primary: true },
       { label: 'Microservices', primary: true },
@@ -300,6 +308,7 @@ export const projects: ProjectEntry[] = [
     name: 'psyCoach AI',
     year: '2025',
     description: 'AI-powered psychology coaching platform.',
+    category: 'personal',
     tags: [
       { label: 'AI', primary: true },
       { label: 'Python', primary: false },
@@ -312,6 +321,7 @@ export const projects: ProjectEntry[] = [
     name: 'PFriends',
     year: '2026',
     description: 'Social networking platform for friends and communities in Pertamina Foundation Awardees.',
+    category: 'professional',
     tags: [
       { label: 'Sveltekit', primary: true },
       { label: 'Pocketbase', primary: true },

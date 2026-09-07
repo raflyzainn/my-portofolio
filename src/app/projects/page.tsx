@@ -1,7 +1,5 @@
-import ProjectsList from './ProjectsList';
-
-export const metadata = { title: 'Projects — Rafly' };
+import { redirect } from 'next/navigation';
 
 export default function ProjectsPage() {
-  return <ProjectsList />;
+  redirect('/');
 }
